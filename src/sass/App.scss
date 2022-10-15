@@ -1,0 +1,83 @@
+@import './mixins/index.scss';
+
+$page: 1169px;
+
+$white: #ffffff;
+$gray: #eaeaea;
+$dark-gray: #999999;
+$green: #71C838;
+
+
+
+body {
+	font-family: Arial;
+	background: green;
+}
+
+//prj-header START
+.prj-header {
+	max-width: $page;
+	margin: 0 auto;
+	background: $white;
+}
+//prj-header END
+
+//prj-main START
+.prj-main {
+	max-width: $page;
+	margin: 0 auto;
+	background: $white;
+}
+//prj-main END
+//
+//prj-wrap start
+.prj-wrap {
+	display: flex;
+	align-items: baseline;
+	max-width: 991px;
+	margin: 0 auto;
+}
+
+.prj-wrap__left {
+	width: 100%;
+	max-width: 234px;
+}
+
+.prj-wrap__right {
+	display: flex;
+	flex: 1 1 0;
+	justify-content: flex-start;
+	align-items: baseline;
+}
+//prj-wrap end
+
+//prj-header-link START
+.prj-header-link {
+	display: block;
+	flex: 1 1 0;
+	text-align: right;
+}
+//prj-header-link END
+
+//prj-header-stat START
+.prj-header-stat {
+	position: relative;
+	flex: 1 1 0;
+	background: $gray;
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 20px;
+		top: -20px;
+		border: 10px solid transparent;
+		border-bottom: 10px solid $gray;
+	}
+}
+//prj-header-stat END
+
+//prj-btn START
+.prj-btn {
+	@include prj-btn;
+}
+//prj-btn END
