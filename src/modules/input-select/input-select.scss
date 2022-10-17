@@ -1,0 +1,27 @@
+.prj-block-input {
+	position: relative;
+	&.prj-block-input--select {
+		background-color: transparent;
+	
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			right: 16px;
+			top: 12px;
+			width: 14px;
+			height: 7px;
+			background-image: url('/img/arrow.png');
+			background-position: center center;
+		}
+
+	}
+}
+
+.prj-input {
+	&.prj-input--select {
+		position: relative;
+		background-color: transparent;
+		appearance: none;
+	}
+}

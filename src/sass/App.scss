@@ -14,6 +14,7 @@ $dark-gray: #999999;
 $green: #71c838;
 $blue: #0c77bb;
 $dark: #404040;
+$red: red;
 
 $h1: 30px;
 
@@ -152,12 +153,14 @@ hr {
 .prj-input {
 	width: 100%;
 	max-width: 335px;
+	position: relative;
 	padding: 5px 12px;
 	font-size: 16px;
 	line-height: 19px;
 	border: solid 1px $dark-gray;
-
-	&.prj-input--select {
+	
+	&.prj-input--error {
+	border: solid 1px red;
 	}
 }
 //prj-input END
@@ -235,3 +238,12 @@ input.prj-input-checkbox {
 	}
 }
 //prj-input-checkbox END
+
+//prj-error START
+.prj-error {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+		color: $red;
+}
+//prj-error END
