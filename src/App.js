@@ -1,16 +1,24 @@
 import "./sass/App.scss";
+import { useState } from "react";
 import { Field, Formik, Form, useFormik } from "formik";
 import PrjFormInputSelect from "./modules/input-select/input.js";
 import PrjFormInput from "./modules/input/input";
 import PrjFormInputCheck from "./modules/input-checkbox/input.js";
+import Status from "./modules/status/status.js";
 import initValues from "./formik/start-form/initValues.js";
 import validate from "./formik/start-form/validate.js";
 import onSubmiting from "./formik/start-form/submit.js";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsChange, setStatus } from "./reducers/main-reducer.js";
 
 function App() {
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.main.status);
+  const isChange = useSelector((state) => state.main.isChange);
+
   return (
     <Formik
-      initialValues={initValues}
+      initialValues={{ ...initValues, prjStatus: status }}
       validate={validate}
       onSubmit={(values) => console.log(values)}
     >
@@ -25,22 +33,31 @@ function App() {
             <div className="prj-wrap__right prj-wrap__right--first">
               <h1 className="prj-header-title">Человек №3596941</h1>{" "}
               <span className="prj-header-link">
-                <a className="prj-header-link__link" href="">
+                <a
+                  className="prj-header-link__link"
+                  onClick={() => dispatch(setIsChange())}
+                  href="#"
+                >
                   Сменить статус
                 </a>
               </span>
             </div>
           </div>
-          <div className="prj-wrap">
-            <div className="prj-wrap__left"></div>
-            <div className="prj-wrap__right">
-              <div className="prj-header-stat">
-                <p className="prj-header-stat__status">
-                  Прежде чем действовать, надо понять
-                </p>
-              </div>
-            </div>
-          </div>
+          <Status
+            status={status}
+            dispatch={dispatch}
+            setStatus={setStatus}
+            isChange={isChange}
+          >
+            {
+              <PrjFormInput
+                name="prjStatus"
+                id="prjStatus"
+                placeholder=""
+                type="text"
+              />
+            }
+          </Status>
         </header>
         <main className="prj-main ">
           <div className="prj-wrap ">
