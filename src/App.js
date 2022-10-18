@@ -49,6 +49,7 @@ function App() {
               dispatch={dispatch}
               setStatus={setStatus}
               isChange={isChange}
+              setIsChange={setIsChange}
             >
               {
                 <PrjFormInput

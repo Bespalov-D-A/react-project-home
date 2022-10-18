@@ -1,33 +1,34 @@
 import React from "react";
-import './status.scss'
+import StatusPresent from './status-present.js'
+import "./status.scss";
 
 const Status = (props) => {
-const currentStatus = props.children.props.inputvalue.prjStatus
+  const currentStatus = props.children.props.inputvalue.prjStatus;
+  
+  const setNewStatus = () => {
+            props.dispatch(props.setStatus({ status: currentStatus }))
+            props.dispatch(props.setIsChange())
+  }
 
-  return (
-    <div className="prj-wrap">
-      <div className="prj-wrap__left"></div>
-      <div className="prj-wrap__right">
-        <div className="prj-header-stat">
-          {props.isChange ? (
-            <>
-              {props.children}
-              <div
-                className="prj-ok"
-                onClick={() =>
-                  props.dispatch(props.setStatus({ status: currentStatus }))
-                }
-              >
-                Ok
-              </div>
-            </>
-          ) : (
-            <p className="prj-header-stat__status">{props.status}</p>
-          )}
+  const changeStatusFunc = () => {
+    return props.isChange ? (
+      <>
+        {props.children}
+        <div
+          className="prj-ok"
+          onClick={() =>
+              setNewStatus()
+          }
+        >
+          Ok
         </div>
-      </div>
-    </div>
-  );
+      </>
+    ) : (
+      <p className="prj-header-stat__status">{props.status}</p>
+    );
+  };
+
+  return <StatusPresent changeStatusFunc={changeStatusFunc}/>
 };
 
 export default Status;
