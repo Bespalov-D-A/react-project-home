@@ -5,6 +5,7 @@ import PrjFormInputSelect from "./modules/input-select/input.js";
 import PrjFormInput from "./modules/input/input";
 import PrjFormInputCheck from "./modules/input-checkbox/input.js";
 import Status from "./modules/status/status.js";
+import SubmitFunc from "./modules/submit/submit.js";
 import initValues from "./formik/start-form/initValues.js";
 import validate from "./formik/start-form/validate.js";
 import onSubmiting from "./formik/start-form/submit.js";
@@ -156,12 +157,7 @@ function App() {
             <div className="prj-wrap">
               <div className="prj-wrap__left"></div>
               <div className="prj-wrap__right">
-                <button type="submit" className="prj-btn">
-                  Изменить
-                </button>
-                <p className="prj-input-desc prj-input-desc--btn">
-                  последние изменения 15 мая 2012 в 14:55:17
-                </p>
+                <SubmitFunc />
               </div>
             </div>
           </main>
