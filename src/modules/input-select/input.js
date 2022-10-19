@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useField } from "formik";
+import { useFormikContext, useField } from "formik";
 import "./input-select.scss";
 import Select from "react-select";
 import { sortFunc } from './input-func.js'
 
+
 const PrjFormInput = (props) => {
   const [cities, setCities] = useState(null);
+  const newClass = props.inputclass ? props.inputclass : "";
+  const [ field, meta, helper] = useField(props);
+
 
   useEffect(() => {
     if (!cities) getCities();
@@ -18,23 +22,20 @@ const PrjFormInput = (props) => {
       .catch((error) => console.log(error.message));
   };
 
-  const newClass = props.inputclass ? props.inputclass : "";
-  const [field, meta] = useField(props);
 
-  
+  const changeSelect = (data) => {
+    helper.setValue(data)
+  }
 
   return (
     <div className={"prj-block-input prj-block-input--select"}>
       <Select
- //       components={{ Option: CustomOption }}
         className={"prj-input " + newClass}
         classNamePrefix="prj-select"
-        id={props.name}
-        type={props.type}
-        {...field}
-        {...props}
+        inputId={props.name}
+        onChange={changeSelect}
         options={cities}
-      ></Select>
+      />
       {meta.touched && meta.error ? (
         <div className="prj-error">{meta.error}</div>
       ) : null}
