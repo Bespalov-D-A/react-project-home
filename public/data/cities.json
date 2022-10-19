@@ -4,12 +4,13 @@
         "population": "1688"
     },
     {
-        "city": "Ачинск",
-        "population": "105259"
-    },
-    {
         "city": "Боготол",
         "population": "19819"
+    },
+
+    {
+        "city": "Ачинск",
+        "population": "105259"
     },
     {
         "city": "Бородино",
