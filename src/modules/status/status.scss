@@ -1,4 +1,30 @@
+@import "./../../sass/App.scss";
+
 .prj-ok {
-padding: 20px;
-background: violet;
+	padding: 8px;
+	margin-top: 16px;
+	text-align: center;
+	background: $light;
 }
+
+//prj-header-stat START
+.prj-header-stat {
+	position: relative;
+	flex: 1 1 0;
+	max-width: 503px;
+	padding: 11px 13px 14px 13px;
+	font-size: 14px;
+	line-height: 22px;
+	color: $dark;
+	background: $light-gray;
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 6px;
+		top: -17px;
+		border: 10px solid transparent;
+		border-bottom: 10px solid $light-gray;
+	}
+}
+//prj-header-stat END

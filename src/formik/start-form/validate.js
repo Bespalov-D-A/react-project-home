@@ -5,6 +5,11 @@ const mailValidate = (stringValue) => {
 };
 const validate = (values) => {
   const errors = {};
+  if (!values.prjCity) {
+    errors.prjCity = 'Укажите город'
+  } else if(values.prjCity.length < 1) {
+    errors.prjCity = 'Укажите город'
+  }
 
   if (!values.prjPass) {
     errors.prjPass = "Укажите пароль";

@@ -1,0 +1,18 @@
+@import './../../sass/App.scss';
+
+//prj-header-link START
+.prj-header-link {
+	display: block;
+	flex: 1 1 0;
+	padding: 0 9px;
+	text-align: right;
+
+	.prj-header-link__link {
+		display: inline-block;
+		line-height: 9px;
+		font-size: 12px;
+		border-bottom: dashed 1px $blue;
+	}
+}
+//prj-header-link END
+

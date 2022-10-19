@@ -1,24 +1,4 @@
-@import "./base/index.scss";
-@import "./mixins/index.scss";
-
-$page: 1169px;
-
-$laptop: 991px;
-$tablet: 768px;
-
-$light: #e5e4e4;
-$white: #ffffff;
-$light-gray: #eaeaea;
-$gray: #666666;
-$dark-gray: #999999;
-$green: #71c838;
-$blue: #0c77bb;
-$dark: #404040;
-$red: red;
-
-$h1: 30px;
-
-$Fsmall: 12px;
+@import './_index.scss';
 
 a,
 a:link,
@@ -30,8 +10,10 @@ a:active {
 }
 
 body {
+	height: 100vh;
 	font-family: Arial;
-	background: green;
+	background: linear-gradient(42deg, rgba(102,0,102,1) 0%, rgba(194,0,194,1) 100%);
+
 }
 
 hr {
@@ -41,12 +23,22 @@ hr {
 	border: solid 1px $light;
 }
 
+.prj-form {
+	position: absolute;
+	width: 100%;
+	max-width: 1169px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: $white;
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
 //prj-header START
 .prj-header {
 	max-width: $page;
 	margin: 0 auto;
 	padding-top: 90px;
-	background: $white;
 }
 //prj-header END
 
@@ -89,6 +81,7 @@ hr {
 	}
 
 	&.prj-wrap--checkbox {
+		align-items: center;
 		height: 69px;
 		padding-top: 10px;
 
@@ -187,50 +180,8 @@ hr {
 }
 //prj-input-desc END
 
-//prj-header-link START
-.prj-header-link {
-	display: block;
-	flex: 1 1 0;
-	padding: 0 9px;
-	text-align: right;
 
-	.prj-header-link__link {
-		display: inline-block;
-		line-height: 9px;
-		font-size: 12px;
-		border-bottom: dashed 1px $blue;
-	}
-}
-//prj-header-link END
 
-//prj-header-stat START
-.prj-header-stat {
-	position: relative;
-	flex: 1 1 0;
-	max-width: 503px;
-	padding: 11px 13px 14px 13px;
-	font-size: 14px;
-	line-height: 22px;
-	color: $dark;
-	background: $light-gray;
-
-	&::after {
-		content: "";
-		position: absolute;
-		left: 6px;
-		top: -17px;
-		border: 10px solid transparent;
-		border-bottom: 10px solid $light-gray;
-	}
-}
-//prj-header-stat END
-
-//prj-btn START
-.prj-btn {
-	padding: 11px 20px;
-	@include prj-btn;
-}
-//prj-btn END
 
 //prj-input-checkbox START
 input.prj-input-checkbox {

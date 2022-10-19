@@ -1,4 +1,5 @@
 import React, { useState }from "react";
+import './submit.scss'
 import Moment from "react-moment";
 import SubmitPresent from './submit-present.js'
 

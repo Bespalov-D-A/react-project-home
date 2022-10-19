@@ -1,24 +1,23 @@
 import React from "react";
+import ErrorMessage from './../error/error.js'
 import { useField } from "formik";
-import './input-checkbox.scss'
-
+import "./input-checkbox.scss";
+import InputPresent from "./inputPresent.js";
 const PrjFormInputCheck = (props) => {
   const newClass = props.inputClass ? props.inputClass : "";
   const [field, meta] = useField(props);
+  let newError = meta.touched && meta.error ? "error" : false;
+
   return (
-    <div className={'prj-block-input prj-block-input--check'}>
-      <input
-        className={"prj-input " + newClass}
-        id={props.name}
-        type={props.type}
-        {...field}
-      />
-      {meta.touched && meta.error ? (
-        <div className="prj-error">{meta.error}</div>
-      ) : (
-        null
-      )}
-    </div>
+    <InputPresent
+      className={"prj-input " + newClass}
+      id={props.name}
+      type={props.type}
+      field={field}
+    >
+
+      <ErrorMessage error={newError} meta={meta}/>
+          </InputPresent>
   );
 };
 

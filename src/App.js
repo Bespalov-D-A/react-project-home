@@ -1,6 +1,5 @@
 import "./sass/App.scss";
-import { useState } from "react";
-import { Field, Formik, Form, useFormik } from "formik";
+import { Field, Formik, Form } from "formik";
 import PrjFormInputSelect from "./modules/input-select/input.js";
 import PrjFormInput from "./modules/input/input";
 import PrjFormInputCheck from "./modules/input-checkbox/input.js";
@@ -11,6 +10,7 @@ import validate from "./formik/start-form/validate.js";
 import onSubmiting from "./formik/start-form/submit.js";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsChange, setStatus } from "./reducers/main-reducer.js";
+import HeaderLink from "./modules/header-link/headerLink.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,15 +34,7 @@ function App() {
               </div>
               <div className="prj-wrap__right prj-wrap__right--first">
                 <h1 className="prj-header-title">Человек №3596941</h1>{" "}
-                <span className="prj-header-link">
-                  <a
-                    className="prj-header-link__link"
-                    onClick={() => dispatch(setIsChange())}
-                    href="#"
-                  >
-                    Сменить статус
-                  </a>
-                </span>
+                <HeaderLink dispatch={dispatch} setIsChange={setIsChange} />
               </div>
             </div>
             <Status

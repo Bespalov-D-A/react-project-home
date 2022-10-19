@@ -1,0 +1,18 @@
+@import './../../sass/mixins/_btn.scss';
+@import './../../sass/base/variables.scss';
+//prj-btn START
+.prj-btn {
+	padding: 11px 20px;
+	@include prj-btn;
+}
+//prj-btn END
+
+
+//prj-input-desc START
+.prj-input-desc {
+	&.prj-input-desc--btn {
+		padding-left: 11px;
+	}
+}
+//prj-input-desc END
+
