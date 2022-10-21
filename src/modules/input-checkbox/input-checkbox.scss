@@ -1,6 +1,9 @@
+@import './../../sass/App.scss';
+
 .prj-block-input {
 	&.prj-block-input--check {
 		display: flex;
 		width: auto;
+		
 	}
 }

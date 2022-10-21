@@ -1,27 +1,36 @@
 import "./sass/App.scss";
+import { useEffect } from "react";
 import { Field, Formik, Form } from "formik";
+import validate from "./formik/start-form/validate.js";
 import PrjFormInputSelect from "./modules/input-select/input.js";
 import PrjFormInput from "./modules/input/input";
 import PrjFormInputCheck from "./modules/input-checkbox/input.js";
 import Status from "./modules/status/status.js";
 import SubmitFunc from "./modules/submit/submit.js";
-import initValues from "./formik/start-form/initValues.js";
-import validate from "./formik/start-form/validate.js";
 import onSubmiting from "./formik/start-form/submit.js";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsChange, setStatus } from "./reducers/main-reducer.js";
+import {
+  setPrjCheckbox,
+  setPrjPass,
+  setPrjPassRepeat,
+  setPrjCity,
+  setPrjMail,
+} from "./reducers/form-reducer.js";
 import HeaderLink from "./modules/header-link/headerLink.js";
 
 function App() {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.main.status);
-  const isChange = useSelector((state) => state.main.isChange);
+  const status = useSelector((state) => state.main.mainReducer.status);
+  const isChange = useSelector((state) => state.main.mainReducer.isChange);
+  const initValues = useSelector((state) => state.main.formReducer);
+  const prjCity = useSelector((state) => state.main.formReducer.prjCity);
 
   return (
     <Formik
       initialValues={{ ...initValues, prjStatus: status }}
       validate={validate}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => console.log(initValues)}
     >
       {({ values }) => (
         <Form id="prjForm" className="prj-form">
@@ -51,6 +60,8 @@ function App() {
                   placeholder=""
                   type="text"
                   inputvalue={values}
+                  setItemInputValue={setPrjMail}
+                  dispatch={dispatch}
                 />
               }
             </Status>
@@ -67,6 +78,9 @@ function App() {
                     placeholder="Ваш город"
                     type="select"
                     inputclass="prj-input--select"
+                    prjCity={prjCity}
+                    setItemInputValue={setPrjCity}
+                    dispatch={dispatch}
                   />
                 }
                 <p className="prj-input-desc"></p>
@@ -86,6 +100,8 @@ function App() {
                     id="prjPass"
                     placeholder="Пароль"
                     type="text"
+                    setItemInputValue={setPrjPass}
+                    dispatch={dispatch}
                   />
                 }
                 <p className="prj-input-desc">
@@ -104,6 +120,8 @@ function App() {
                     name="prjPassRepeat"
                     placeholder="Пароль еще раз"
                     type="text"
+                    setItemInputValue={setPrjPassRepeat}
+                    dispatch={dispatch}
                   />
                 }
                 <p className="prj-input-desc">
@@ -124,6 +142,8 @@ function App() {
                     name="prjMail"
                     placeholder="Электронная почта"
                     type="text"
+                    setItemInputValue={setPrjMail}
+                    dispatch={dispatch}
                   />
                 }
                 <p className="prj-input-desc">
@@ -140,6 +160,8 @@ function App() {
                   name="prjCheckbox"
                   className="prj-input-checkbox"
                   type="checkbox"
+                  setItemInputValue={setPrjCheckbox}
+                  dispatch={dispatch}
                 />
                 <p className="prj-input-desc prj-input-desc--check">
                   принимать актуальную информацию на емейл

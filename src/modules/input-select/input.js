@@ -22,7 +22,10 @@ const PrjFormInput = (props) => {
       .catch((error) => console.log(error.message));
   };
 
+  const newField = { ...field, onChange: (data) => changeSelect(data) };
+
   const changeSelect = (data) => {
+    props.dispatch(props.setItemInputValue(data));
     helper.setValue(data);
   };
 
@@ -31,6 +34,7 @@ const PrjFormInput = (props) => {
       className={"prj-input " + newClass}
       classNamePrefix="prj-select"
       inputId={props.name}
+      field={newField}
       onChange={changeSelect}
       options={cities}
     >

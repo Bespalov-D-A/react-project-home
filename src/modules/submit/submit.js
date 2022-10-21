@@ -1,7 +1,7 @@
-import React, { useState }from "react";
-import './submit.scss'
+import React, { useState } from "react";
+import "./submit.scss";
 import Moment from "react-moment";
-import SubmitPresent from './submit-present.js'
+import SubmitPresent from "./submit-present.js";
 
 const SubmitComp = (props) => {
   const [isTurnOn, setIsTurnOn] = useState(null);
@@ -12,13 +12,15 @@ const SubmitComp = (props) => {
     setIsTurnOn(true);
   };
 
-  return <SubmitPresent submitFunc={submitFunc}>
-         {isTurnOn ? (
-          <Moment date={date} locale="ru" format="DD MMMM  YYYY в HH:mm:ss" />
-        ) : (
-          "Форма не заполнялась ранее"
-        )}
+  return (
+    <SubmitPresent submitFunc={submitFunc}>
+      {isTurnOn ? (
+        <Moment date={date} locale="ru" format="DD MMMM  YYYY в HH:mm:ss" />
+      ) : (
+        "Форма не заполнялась ранее"
+      )}
     </SubmitPresent>
+  );
 };
 
 export default SubmitComp;
